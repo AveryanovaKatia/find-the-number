@@ -5,7 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.PriorityQueue;
 
-import lombok.extern.slf4j.Slf4j;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -13,13 +15,13 @@ import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import ru.project.exception.ValidationException;
 import ru.project.model.NumberResponse;
 
-@Slf4j
 @Service
 public class NumberServiceImpl implements NumberService {
+
+    private static final Logger log = LoggerFactory.getLogger(NumberService.class);
 
     @Override
     public NumberResponse findNMaxNumber(String filePath, int n) throws IOException {
